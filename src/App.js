@@ -6,12 +6,13 @@ import StatusMessage from './components/StatusMessage';
 import './styles/root.scss';
 
 export default () => {
-  const [history,setHistory] = useState([{board: Array(9).fill(null),isXNext: true}]);
+  const NEW_GAME = [{board: Array(9).fill(null),isXNext: true}];
+  const [history,setHistory] = useState(NEW_GAME);
   const [currentMove, setCurrentMove] = useState(0);
   console.log(currentMove)
   const current = history[currentMove];
   console.log('history',history)
-    const winner = calculateWinner(current.board);
+    const {winner, winningSquares} = calculateWinner(current.board);
     console.log(winner);
     const handleSquareClick = (position) => {
         if(current.board[position] || winner){
@@ -34,11 +35,16 @@ export default () => {
     const moveTo = (move) =>{
       setCurrentMove(move);
     }
+    const onNewGame = () =>{
+      setHistory(NEW_GAME);
+      setCurrentMove(0);
+    }
 
   return (<div className="app">
     <h1>TicTocToe</h1>
-    <StatusMessage winner={winner} current={current}></StatusMessage>    
-    <Board board={current.board} handleSquareClick={handleSquareClick} />
+    <StatusMessage winner={winner} current={current}></StatusMessage>
+    <Board board={current.board} handleSquareClick={handleSquareClick} winningSquares={winningSquares}/>
+    <button type="button" onClick={onNewGame}>NEW GAME</button>    
     <History history={history} moveTo={moveTo} currentMove={currentMove}></History>
   </div>
   );
