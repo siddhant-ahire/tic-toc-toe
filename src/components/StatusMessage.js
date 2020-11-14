@@ -15,14 +15,13 @@ const StatusMessage = ({winner,current}) => {
             )}
             {!winner && !noMovesLeft && (
                 <>
-                Next player is 
-                <span className={current.isXNext ? 'text-green' : 'text-orange'}>{current.isXNext ? 'X':'O'}</span>
+                Next player is {' '}
+                <span className={current.isXNext ? 'text-green' : 'text-orange'}> {current.isXNext ? ' X':' O'}</span>
                 </>
                 )}
             {!winner && noMovesLeft && (
                 <>
-                <span className="text-green">X</span>
-                <span className="text-orange">O</span>
+                Game Tie!
                 </>
                 )}
         </div>
