@@ -2,7 +2,7 @@
   "name": "tictactoe",
   "version": "0.1.0",
   "description": "The default template project for [nano-react-app](https://github.com/adrianmcli/nano-react-app).",
-  "homepage": "https://siddhant-ahire.github.io/tic-toc-toe",
+  "homepage": "https://siddhant-ahire.github.io/tic-toc-toe/",
   "scripts": {
     "start": "parcel index.html",
     "build": "npm run clear && parcel build index.html",
